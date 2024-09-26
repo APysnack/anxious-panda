@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { useRouter } from 'expo-router';
 
 export default function SignInScreen() {
+  const router = useRouter();
   const [error, setError] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,6 +28,7 @@ export default function SignInScreen() {
       if (response.data['token']) {
         const user = response.data['user'];
         await AsyncStorage.setItem('jwtToken', response.data['token']);
+        router.push('/home');
       }
     } catch (error) {
       setError(error.message);
