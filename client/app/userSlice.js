@@ -11,9 +11,11 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
+      const { user, token } = action.payload;
       AsyncStorage.setItem('jwtToken', token);
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+      AsyncStorage.setItem('user', JSON.stringify(user));
+      state.user = user;
+      state.token = token;
     },
     clearUser: (state) => {
       state.user = null;

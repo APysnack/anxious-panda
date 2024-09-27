@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { useRouter } from 'expo-router';
 import { useDispatch } from 'react-redux';
@@ -14,6 +13,8 @@ interface SignInResponse {
   };
 }
 
+const SERVER_URL = 'http://localhost:3000';
+
 export default function SignInScreen(): JSX.Element {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function SignInScreen(): JSX.Element {
   const handleSignIn = async (): Promise<void> => {
     try {
       const response = await axios.post<SignInResponse>(
-        'http://localhost:3000/sign_in',
+        `${SERVER_URL}/sign_in`,
         {
           email,
           password,

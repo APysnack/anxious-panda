@@ -11,8 +11,8 @@ import 'react-native-reanimated';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import useLoadUser from './utils/useLoadUser';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -32,13 +32,19 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <UserLoader />
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
           <Stack.Screen name='+not-found' />
         </Stack>
-      </Provider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }
+
+const UserLoader = () => {
+  useLoadUser();
+  return null;
+};
