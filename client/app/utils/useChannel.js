@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 global.addEventListener = () => {};
 global.removeEventListener = () => {};
@@ -13,6 +14,19 @@ export default function useChannel(actionCable) {
       unsubscribe();
     };
   }, []);
+
+  const getJwtToken = async () => {
+    try {
+      const token = await AsyncStorage.getItem('jwtToken');
+      if (token !== null) {
+        return token;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.error('Error retrieving token:', error);
+    }
+  };
 
   const unsubscribe = () => {
     setSubscribed(false);
@@ -33,9 +47,14 @@ export default function useChannel(actionCable) {
     }
   };
 
-  const subscribe = (data, callbacks) => {
+  const subscribe = async (data, callbacks) => {
     console.log(`Connecting to ${data.channel}`);
-    const channel = actionCable.subscriptions.create(data, {
+    const params = {
+      ...data,
+      jwt: await getJwtToken(),
+    };
+
+    const channel = actionCable.subscriptions.create(params, {
       received: (x) => {
         if (callbacks.received) callbacks.received(x);
       },
@@ -45,7 +64,7 @@ export default function useChannel(actionCable) {
         if (callbacks.initialized) callbacks.initialized();
       },
       connected: () => {
-        console.log('Connected to ' + data.channel);
+        console.log(`Connected to ${data.channel} ${data.room_id}`);
         setConnected(true);
         if (callbacks.connected) callbacks.connected();
       },

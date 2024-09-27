@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { User } from '../interfaces/models';
+import { UserType } from '../interfaces/models';
 
 interface UserState {
-  user: User | null;
+  user: UserType | null;
   token: string | null;
 }
 
@@ -16,7 +16,10 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<{ user: User; token: string }>) => {
+    setUser: (
+      state,
+      action: PayloadAction<{ user: UserType; token: string }>
+    ) => {
       const { user, token } = action.payload;
       state.user = user;
       state.token = token;

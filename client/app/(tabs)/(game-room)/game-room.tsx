@@ -11,7 +11,7 @@ interface GameRoomProps {
 
 const GameRoom: React.FC<GameRoomProps> = () => {
   const { id } = useLocalSearchParams();
-  const { actionCable } = useActionCable('ws://localhost:3000/cable');
+  const { actionCable } = useActionCable();
   const { subscribe, unsubscribe, send } = useChannel(actionCable);
 
   useEffect(() => {
