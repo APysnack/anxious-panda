@@ -2,6 +2,10 @@ User.find_or_create_by(email: 'purleedef@gmail.com') do |u|
   u.password = 'password'
 end
 
+User.find_or_create_by(email: 'test@gmail.com') do |u|
+  u.password = 'password'
+end
+
 world_tournament = Game.find_or_create_by(name: 'World Tournament')
 monopoly = Game.find_or_create_by(name: 'Monopoly')
 
