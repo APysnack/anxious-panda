@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { setUser } from '../userSlice';
+import { setUser } from '../store/userSlice';
 
 const useLoadUser = () => {
   const dispatch = useDispatch();

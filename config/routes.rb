@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'sign_in' => 'sessions#create', as: :sign_in
 
   resources :game_rooms, only: [:index, :create]
+  resources :games, only: [:index] 
 
   # root "posts#index"
 end

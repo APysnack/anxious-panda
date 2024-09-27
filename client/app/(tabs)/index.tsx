@@ -3,7 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import axios from 'axios';
 import { useRouter } from 'expo-router';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../userSlice';
+import { setUser } from '../store/userSlice';
 
 interface SignInResponse {
   token: string;
@@ -37,9 +37,8 @@ export default function SignInScreen(): JSX.Element {
         }
       );
 
-      if (response.data.token) {
-        const { user, token } = response.data;
-        dispatch(setUser({ user, token }));
+      if (response?.data?.token) {
+        dispatch(setUser(response.data));
         router.push('/home');
       }
     } catch (error: any) {

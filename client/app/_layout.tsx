@@ -8,7 +8,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-import { store } from './store';
+import store from './store/index';
 import { Provider } from 'react-redux';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import useLoadUser from './utils/useLoadUser';
