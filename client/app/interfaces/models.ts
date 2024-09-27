@@ -1,8 +1,13 @@
-export interface Game {
+export interface GameType {
   id: string;
   name: string;
 }
 
-export interface User {
+export interface GameRoomType {
+  id: string;
+  name: string;
+}
+
+export interface UserType {
   email: string | null;
 }

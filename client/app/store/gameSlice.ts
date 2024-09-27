@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Game } from '../interfaces/models';
+import { GameType } from '../interfaces/models';
 const SERVER_URL = 'http://localhost:3000';
 
 interface GamesState {
-  games: Game[];
+  games: GameType[];
   loading: boolean;
   error: string | null;
 }
@@ -14,7 +14,7 @@ const initialState: GamesState = {
   error: null,
 };
 
-export const fetchGames = createAsyncThunk<Game[]>(
+export const fetchGames = createAsyncThunk<GameType[]>(
   'games/fetchGames',
   async () => {
     const response = await fetch(`${SERVER_URL}/games`);

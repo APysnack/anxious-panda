@@ -9,11 +9,11 @@ import {
 } from './home.styles';
 import GameRoomList from './GameRoomList';
 import { fetchGames } from '../../store/gameSlice';
-import { Game } from '../../interfaces/models';
+import { GameType } from '../../interfaces/models';
 
 const HomeScreen: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const [selectedGame, setSelectedGame] = useState<Game | null>(null);
+  const [selectedGame, setSelectedGame] = useState<GameType | null>(null);
   const { games, loading, error } = useSelector(
     (state: RootState) => state.games
   );
