@@ -3,16 +3,27 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { useRouter } from 'expo-router';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../userSlice';
 
-export default function SignInScreen() {
+interface SignInResponse {
+  token: string;
+  user: {
+    id: number;
+    email: string;
+  };
+}
+
+export default function SignInScreen(): JSX.Element {
+  const dispatch = useDispatch();
   const router = useRouter();
-  const [error, setError] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [error, setError] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (): Promise<void> => {
     try {
-      const response = await axios.post(
+      const response = await axios.post<SignInResponse>(
         'http://localhost:3000/sign_in',
         {
           email,
@@ -25,13 +36,13 @@ export default function SignInScreen() {
         }
       );
 
-      if (response.data['token']) {
-        const user = response.data['user'];
-        await AsyncStorage.setItem('jwtToken', response.data['token']);
+      if (response.data.token) {
+        const { user, token } = response.data;
+        dispatch(setUser({ user, token }));
         router.push('/home');
       }
-    } catch (error) {
-      setError(error.message);
+    } catch (error: any) {
+      setError(error.message || 'An error occurred');
     }
   };
 
@@ -82,5 +93,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     width: '100%',
     maxWidth: 300,
+  },
+  error: {
+    color: 'red',
   },
 });
