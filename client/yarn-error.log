@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/BC7759/.nvm/versions/node/v20.2.0/bin/node /Users/BC7759/.node/corepack/yarn/1.22.15/bin/yarn.js add @actioncable
+  /Users/BC7759/.nvm/versions/node/v20.2.0/bin/node /Users/BC7759/.node/corepack/yarn/1.22.15/bin/yarn.js add react-native-vector-iconsyarn add --dev @types/react-native-vector-icons
 
 PATH: 
   /Users/BC7759/.rvm/gems/ruby-3.1.4/bin:/Users/BC7759/.rvm/gems/ruby-3.1.4@global/bin:/Users/BC7759/.rvm/rubies/ruby-3.1.4/bin:/Users/BC7759/.rvm/bin:/Users/BC7759/.pyenv/shims:/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/bin:/Users/BC7759/.docker/bin:/Users/BC7759/.nvm/versions/node/v20.2.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/BC7759/Library/Android/sdk/platform-tools:/Users/BC7759/Library/Android/sdk/emulator:/Users/BC7759/Library/Android/sdk/tools:/Users/BC7759/Library/Android/sdk/tools/bin:/Users/BC7759/Library/Android/sdk/platform-tools
@@ -14,8 +14,8 @@ Platform:
   darwin arm64
 
 Trace: 
-  Error: https://registry.npmjs.org/@actioncable: Request "https://registry.npmjs.org/@actioncable" returned a 405
-      at params.callback [as _callback] (/Users/BC7759/.node/corepack/yarn/1.22.15/lib/cli.js:66149:18)
+  Error: https://registry.npmjs.org/react-native-vector-iconsyarn: Not found
+      at params.callback [as _callback] (/Users/BC7759/.node/corepack/yarn/1.22.15/lib/cli.js:66140:18)
       at self.callback (/Users/BC7759/.node/corepack/yarn/1.22.15/lib/cli.js:140885:22)
       at Request.emit (node:events:511:28)
       at Request.<anonymous> (/Users/BC7759/.node/corepack/yarn/1.22.15/lib/cli.js:141857:10)
@@ -45,6 +45,7 @@ npm manifest:
     },
     "dependencies": {
       "@expo/vector-icons": "^14.0.2",
+      "@rails/actioncable": "^7.2.100",
       "@react-native-async-storage/async-storage": "^2.0.0",
       "@react-navigation/native": "^6.0.2",
       "@reduxjs/toolkit": "^2.2.7",
@@ -65,6 +66,7 @@ npm manifest:
       "react-native-reanimated": "~3.10.1",
       "react-native-safe-area-context": "4.10.5",
       "react-native-screens": "3.31.1",
+      "react-native-vector-icons": "^10.2.0",
       "react-native-web": "~0.19.10",
       "react-redux": "^9.1.2",
       "styled-components": "^6.1.13"
@@ -1640,6 +1642,11 @@ Lockfile:
       "@babel/runtime" "^7.13.10"
       "@radix-ui/react-compose-refs" "1.0.0"
   
+  "@rails/actioncable@^7.2.100":
+    version "7.2.100"
+    resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.2.100.tgz#86ec1c2e00c357cef1e421fd63863d5c34339ce8"
+    integrity sha512-7xtIENf0Yw59AFDM3+xqxPCZxev3QVAqjPmUzmgsB9eL8S/zTpB0IU9srNc7XknzJI4e09XKNnCaJRx3gfYzXA==
+  
   "@react-native-async-storage/async-storage@^2.0.0":
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-2.0.0.tgz#22373f7f83132547701637fc574ddb83b83b384e"
@@ -3102,6 +3109,15 @@ Lockfile:
       string-width "^4.2.0"
       strip-ansi "^6.0.0"
       wrap-ansi "^6.2.0"
+  
+  cliui@^7.0.2:
+    version "7.0.4"
+    resolved "https://registry.yarnpkg.com/cliui/-/cliui-7.0.4.tgz#a0265ee655476fc807aea9df3df8df7783808b4f"
+    integrity sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==
+    dependencies:
+      string-width "^4.2.0"
+      strip-ansi "^6.0.0"
+      wrap-ansi "^7.0.0"
   
   cliui@^8.0.1:
     version "8.0.1"
@@ -6963,6 +6979,14 @@ Lockfile:
       react-freeze "^1.0.0"
       warn-once "^0.1.0"
   
+  react-native-vector-icons@^10.2.0:
+    version "10.2.0"
+    resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-10.2.0.tgz#f438f2ca16f7d6be658fd6ec8f0d2b7e2132b91c"
+    integrity sha512-n5HGcxUuVaTf9QJPs/W22xQpC2Z9u0nb0KgLPnVltP8vdUvOp6+R26gF55kilP/fV4eL4vsAHUqUjewppJMBOQ==
+    dependencies:
+      prop-types "^15.7.2"
+      yargs "^16.1.1"
+  
   react-native-web@~0.19.10:
     version "0.19.12"
     resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.19.12.tgz#30d1fd70bdff7886f43c0c2698629d830fade6bc"
@@ -8696,6 +8720,11 @@ Lockfile:
       camelcase "^5.0.0"
       decamelize "^1.2.0"
   
+  yargs-parser@^20.2.2:
+    version "20.2.9"
+    resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.9.tgz#2eb7dc3b0289718fc295f362753845c41a0c94ee"
+    integrity sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==
+  
   yargs-parser@^21.1.1:
     version "21.1.1"
     resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.1.1.tgz#9096bceebf990d21bb31fa9516e0ede294a77d35"
@@ -8717,6 +8746,19 @@ Lockfile:
       which-module "^2.0.0"
       y18n "^4.0.0"
       yargs-parser "^18.1.2"
+  
+  yargs@^16.1.1:
+    version "16.2.0"
+    resolved "https://registry.yarnpkg.com/yargs/-/yargs-16.2.0.tgz#1c82bf0f6b6a66eafce7ef30e376f49a12477f66"
+    integrity sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==
+    dependencies:
+      cliui "^7.0.2"
+      escalade "^3.1.1"
+      get-caller-file "^2.0.5"
+      require-directory "^2.1.1"
+      string-width "^4.2.0"
+      y18n "^5.0.5"
+      yargs-parser "^20.2.2"
   
   yargs@^17.3.1, yargs@^17.6.2:
     version "17.7.2"
