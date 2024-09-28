@@ -5,6 +5,7 @@ import { GameRoomType } from '../../interfaces/models';
 import useActionCable from '../../utils/useActionCable';
 import useChannel from '../../utils/useChannel';
 import withAuth from '@/app/utils/withAuth';
+import Card from '@/components/Card/Card';
 
 interface GameRoomProps {
   gameRoom: GameRoomType;
@@ -43,6 +44,7 @@ const GameRoom: React.FC<GameRoomProps> = () => {
         <Text key={index}>{user}</Text>
       ))}
       <Button title='Send Message' onPress={() => {}} />
+      <Card />
     </View>
   );
 };
