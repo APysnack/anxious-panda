@@ -40,11 +40,7 @@ export default function RootLayout() {
             headerShown: false,
           }}
         >
-          <Stack.Screen name='index' options={{ headerTitle: 'Home Page' }} />
-          <Stack.Screen
-            name='game-room/[id]'
-            options={{ headerTitle: 'Game Page' }}
-          />
+          <Stack.Screen name='(tabs)' />
           <Stack.Screen name='+not-found' />
         </Stack>
       </ThemeProvider>

@@ -13,7 +13,7 @@ const GameRoom: React.FC<GameRoomProps> = () => {
   const [users, setUsers] = useState<string[]>([]);
   const { id } = useLocalSearchParams();
   const { actionCable } = useActionCable();
-  const { subscribe, unsubscribe, send } = useChannel(actionCable);
+  const { subscribe, unsubscribe } = useChannel(actionCable);
 
   useEffect(() => {
     subscribe(
