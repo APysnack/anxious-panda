@@ -1,3 +1,0 @@
-class MonopolyCard < Card
-  
-end

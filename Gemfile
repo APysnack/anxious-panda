@@ -27,6 +27,7 @@ gem 'devise'
 gem 'devise-jwt'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+gem "pg"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

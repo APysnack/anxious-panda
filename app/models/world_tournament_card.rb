@@ -1,3 +1,0 @@
-class WorldTournamentCard < Card
-  
-end
