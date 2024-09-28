@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-native';
-import { useRouter } from 'expo-router';
+import { Button, Text } from 'react-native';
 import { useSelector } from 'react-redux';
 import { signIn } from '../../store/userSlice';
 import { RootState, useAppDispatch } from '../../store';
 import { Container, Title, Input, ErrorText } from './index.styles';
+import HomePage from '../../../components/HomePage/HomePage';
 
 export default function SignInScreen(): JSX.Element {
   const dispatch = useAppDispatch();
-  const router = useRouter();
   const [error, setError] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const user = useSelector((state: RootState) => state.user.user);
-
-  useEffect(() => {
-    if (user) {
-      router.push('/home');
-    }
-  }, [user]);
 
   const handleSignIn = async (): Promise<void> => {
     setError('');
@@ -28,6 +21,10 @@ export default function SignInScreen(): JSX.Element {
       setError(err.message || 'Failed to sign in');
     }
   };
+
+  if (user) {
+    return <HomePage />;
+  }
 
   return (
     <Container>

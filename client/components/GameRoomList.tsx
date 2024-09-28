@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { GameType, GameRoomType } from '../../interfaces/models';
-import { fetchGameRooms } from '../../store/gameRoomSlice';
-import { AppDispatch } from '../../store/index';
+import { GameRoomType, GameType } from '@/app/interfaces/models';
+import { fetchGameRooms } from '@/app/store/gameRoomSlice';
+import { AppDispatch } from '@/app/store/index';
 import { useDispatch } from 'react-redux';
-import { Link } from 'expo-router';
+import { Link, Href } from 'expo-router';
 import { View, Text } from 'react-native';
+
+const GAME_ROOM_1 = '/games/1' as Href;
 
 interface GameRoomListProps {
   selectedGame: GameType | null;
@@ -41,7 +43,7 @@ function GameRoomList({ selectedGame }: GameRoomListProps) {
           {gameRooms.length > 0 ? (
             gameRooms.map((room) => (
               <View key={room.id}>
-                <Link href={`/game-room?id=${room.id}`}>
+                <Link href={GAME_ROOM_1}>
                   <Text>{room.name}</Text>
                 </Link>
               </View>

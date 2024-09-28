@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from '../../store/index';
+import { RootState, AppDispatch } from '@/app/store';
 import {
   HomeContainer,
   WelcomeText,
@@ -8,10 +8,10 @@ import {
   GameButtonText,
   SignOutButton,
   SignOutButtonText,
-} from './home.styles';
-import GameRoomList from './GameRoomList';
-import { fetchGames } from '../../store/gameSlice';
-import { GameType } from '../../interfaces/models';
+} from './HomePage.styles';
+import GameRoomList from '../GameRoomList';
+import { fetchGames } from '@/app/store/gameSlice';
+import { GameType } from '@/app/interfaces/models';
 import { Text } from 'react-native';
 import { clearUser } from '@/app/store/userSlice';
 import { useRouter } from 'expo-router';
