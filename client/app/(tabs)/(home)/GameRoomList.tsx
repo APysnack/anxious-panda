@@ -4,6 +4,7 @@ import { fetchGameRooms } from '../../store/gameRoomSlice';
 import { AppDispatch } from '../../store/index';
 import { useDispatch } from 'react-redux';
 import { Link } from 'expo-router';
+import { View, Text } from 'react-native';
 
 interface GameRoomListProps {
   selectedGame: GameType | null;
@@ -31,26 +32,28 @@ function GameRoomList({ selectedGame }: GameRoomListProps) {
   }, [selectedGame, dispatch]);
 
   return (
-    <div>
+    <View>
       {selectedGame ? (
         <>
-          <h3>{selectedGame.name}</h3>
-          <ul>
-            {gameRooms.length > 0 ? (
-              gameRooms.map((room) => (
-                <li key={room.id}>
-                  <Link href={`/game-room?id=${room.id}`}>{room.name}</Link>
-                </li>
-              ))
-            ) : (
-              <li>No game rooms available</li>
-            )}
-          </ul>
+          <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
+            {selectedGame.name}
+          </Text>
+          {gameRooms.length > 0 ? (
+            gameRooms.map((room) => (
+              <View key={room.id}>
+                <Link href={`/game-room?id=${room.id}`}>
+                  <Text>{room.name}</Text>
+                </Link>
+              </View>
+            ))
+          ) : (
+            <Text>No game rooms available</Text>
+          )}
         </>
       ) : (
-        'No game selected'
+        <Text>No game selected</Text>
       )}
-    </div>
+    </View>
   );
 }
 
