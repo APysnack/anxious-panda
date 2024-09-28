@@ -1,12 +1,15 @@
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import {
   CardContainer,
   CardImage,
   CardStats,
   CardBackImage,
-  CardName,
+  CardText,
+  CardContent,
+  HeartContainer,
 } from './Card.styles';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Card = () => {
   const cardInfo = {
@@ -29,20 +32,29 @@ const Card = () => {
 
   return (
     <TouchableOpacity onPress={handleFlip}>
-      <CardContainer>
+      <CardContainer
+        colors={['#4d4a4a', '#1C1C1C']} // You can adjust these colors for the gradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+      >
         {flipped ? (
           <CardBackImage source={{ uri: cardInfo.cardBackImage }} />
         ) : (
-          <>
-            <CardName>{cardInfo.name}</CardName>
+          <CardContent>
+            <HeartContainer>
+              <CardText>{cardInfo.health}</CardText>
+              <Icon name='heart' size={12} color='red' />
+            </HeartContainer>
+
+            <CardText>{cardInfo.name}</CardText>
             <CardImage source={{ uri: cardInfo.imageUrl }} />
 
             <CardStats>
-              <Text>Strength: {cardInfo.strength}</Text>
-              <Text>Agility: {cardInfo.agility}</Text>
-              <Text>Intellect: {cardInfo.intellect}</Text>
+              <CardText>Strength: {cardInfo.strength}</CardText>
+              <CardText>Agility: {cardInfo.agility}</CardText>
+              <CardText>Intellect: {cardInfo.intellect}</CardText>
             </CardStats>
-          </>
+          </CardContent>
         )}
       </CardContainer>
     </TouchableOpacity>
