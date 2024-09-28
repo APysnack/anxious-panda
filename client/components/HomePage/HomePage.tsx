@@ -16,7 +16,7 @@ import { Text } from 'react-native';
 import { clearUser } from '@/app/store/userSlice';
 import { useRouter } from 'expo-router';
 
-const HomeScreen: React.FC = () => {
+const HomePage: React.FC = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
   const [selectedGame, setSelectedGame] = useState<GameType | null>(null);
@@ -60,4 +60,4 @@ const HomeScreen: React.FC = () => {
   );
 };
 
-export default HomeScreen;
+export default HomePage;

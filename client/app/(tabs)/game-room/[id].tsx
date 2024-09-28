@@ -4,6 +4,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { GameRoomType } from '../../interfaces/models';
 import useActionCable from '../../utils/useActionCable';
 import useChannel from '../../utils/useChannel';
+import withAuth from '@/app/utils/withAuth';
 
 interface GameRoomProps {
   gameRoom: GameRoomType;
@@ -36,7 +37,6 @@ const GameRoom: React.FC<GameRoomProps> = () => {
 
   return (
     <View>
-      <Text>Hello</Text>
       <Text>Room ID: {id}</Text>
       <Text>Connected Users:</Text>
       {users.map((user, index) => (
@@ -47,4 +47,4 @@ const GameRoom: React.FC<GameRoomProps> = () => {
   );
 };
 
-export default GameRoom;
+export default withAuth(GameRoom);
