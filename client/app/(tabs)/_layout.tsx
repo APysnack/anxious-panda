@@ -19,6 +19,7 @@ const TabsLayout = () => {
         name='game-room/[id]'
         options={{
           headerShown: false,
+          href: '/game-room/1',
           tabBarLabel: 'Game Room',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons

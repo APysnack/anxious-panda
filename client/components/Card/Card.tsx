@@ -10,20 +10,14 @@ import {
   HeartContainer,
 } from './Card.styles';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { RaceCardType, WeaponCardType } from '@/app/interfaces/models';
 
-const Card = () => {
-  const cardInfo = {
-    imageUrl:
-      'https://static.wikia.nocookie.net/ondorwis/images/4/46/Dwarf.jpg',
-    cardBackImage:
-      'https://i.pinimg.com/236x/e3/c0/30/e3c0303bd55533912981137b2eb9a157.jpg',
-    name: 'Dwarf',
-    health: 100,
-    strength: 8,
-    agility: 7,
-    intellect: 5,
-  };
+interface CardProps {
+  card: RaceCardType | WeaponCardType;
+}
 
+const Card: React.FC<CardProps> = ({ card }) => {
+  console.log(card);
   const [flipped, setFlipped] = useState(false);
 
   const handleFlip = () => {
@@ -37,25 +31,7 @@ const Card = () => {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       >
-        {flipped ? (
-          <CardBackImage source={{ uri: cardInfo.cardBackImage }} />
-        ) : (
-          <CardContent>
-            <HeartContainer>
-              <CardText>{cardInfo.health}</CardText>
-              <Icon name='heart' size={12} color='red' />
-            </HeartContainer>
-
-            <CardText>{cardInfo.name}</CardText>
-            <CardImage source={{ uri: cardInfo.imageUrl }} />
-
-            <CardStats>
-              <CardText>Strength: {cardInfo.strength}</CardText>
-              <CardText>Agility: {cardInfo.agility}</CardText>
-              <CardText>Intellect: {cardInfo.intellect}</CardText>
-            </CardStats>
-          </CardContent>
-        )}
+        <CardText>{card.name}</CardText>
       </CardContainer>
     </TouchableOpacity>
   );
