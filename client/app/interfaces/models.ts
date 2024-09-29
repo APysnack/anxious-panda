@@ -17,6 +17,8 @@ export interface UserType {
 export interface WeaponCardType {
   id: string | null;
   name: string | null;
+  frontImageUrl: string | null;
+  backImageUrl: string | null;
   data: {
     health: number | null;
     intellect: number | null;
@@ -28,6 +30,8 @@ export interface WeaponCardType {
 export interface RaceCardType {
   id: string | null;
   name: string | null;
+  frontImageUrl: string | null;
+  backImageUrl: string | null;
   data: {
     health: number | null;
     intellect: number | null;

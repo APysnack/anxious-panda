@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, ScrollView } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { GameRoomType } from '../../interfaces/models';
 import useActionCable from '../../utils/useActionCable';
@@ -48,7 +48,7 @@ const GameRoom: React.FC<GameRoomProps> = () => {
   }, []);
 
   return (
-    <View>
+    <ScrollView>
       <Text>{headline}</Text>
       <Text>Room ID: {id}</Text>
       <Text>Connected Users:</Text>
@@ -59,11 +59,11 @@ const GameRoom: React.FC<GameRoomProps> = () => {
       {gameState.starterRaceCards && gameState.starterRaceCards.length > 0 ? (
         <View>
           {gameState.starterRaceCards.map((card, index) => (
-            <Card key={index} card={card} />
+            <Card key={index} card={toCamelCase(card)} />
           ))}
         </View>
       ) : null}
-    </View>
+    </ScrollView>
   );
 };
 

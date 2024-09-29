@@ -17,6 +17,7 @@ monopoly = Game.find_or_create_by(name: 'Monopoly')
   cards.each do |card|
     Card.find_or_create_by(game: world_tournament, name: card[:name], sub_type: card[:sub_type]) do |wt_card|
       wt_card.data = card[:data]
+      wt_card.front_image = card[:front_image] if card[:front_image].present?
     end
   end
 end

@@ -1,4 +1,4 @@
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Image } from 'react-native';
 import React, { useState } from 'react';
 import {
   CardContainer,
@@ -12,12 +12,13 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import { RaceCardType, WeaponCardType } from '@/app/interfaces/models';
 
+const SERVER_URL = 'http://localhost:3000';
+
 interface CardProps {
   card: RaceCardType | WeaponCardType;
 }
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  console.log(card);
   const [flipped, setFlipped] = useState(false);
 
   const handleFlip = () => {
@@ -27,11 +28,21 @@ const Card: React.FC<CardProps> = ({ card }) => {
   return (
     <TouchableOpacity onPress={handleFlip}>
       <CardContainer
-        colors={['#4d4a4a', '#1C1C1C']} // You can adjust these colors for the gradient
+        colors={['#4d4a4a', '#1C1C1C']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       >
-        <CardText>{card.name}</CardText>
+        {flipped ? (
+          <Image
+            source={{ uri: SERVER_URL + card.backImageUrl || '' }}
+            style={{ width: 100, height: 150 }}
+          />
+        ) : (
+          <Image
+            source={{ uri: SERVER_URL + card.frontImageUrl || '' }}
+            style={{ width: 100, height: 150 }}
+          />
+        )}
       </CardContainer>
     </TouchableOpacity>
   );
