@@ -4,7 +4,7 @@ class GameRoomChannel < ApplicationCable::Channel
   def subscribed
     @current_user = decode_jwt(params[:jwt]) 
     if @current_user
-      stream_from game_room
+      stream_from game_room 
       broadcaster.send("game_state", game_manager.game_state)
     end
   end

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, ScrollView } from 'react-native';
+import { Text, Button, ScrollView } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { GameRoomType } from '../../interfaces/models';
 import useActionCable from '../../utils/useActionCable';
 import useChannel from '../../utils/useChannel';
 import withAuth from '@/app/utils/withAuth';
-import Card from '@/components/Card/Card';
 import { toCamelCase } from '@/app/utils/utils';
+import CardCarousel from '@/components/CardCarousel/CardCarousel';
 
 interface GameRoomProps {
   gameRoom: GameRoomType;
@@ -17,6 +17,8 @@ const GameRoom: React.FC<GameRoomProps> = () => {
     currentPlayer: '',
     currentTurn: 0,
     starterRaceCards: [],
+    starterClassCards: [],
+    starterWeaponCards: [],
   });
   const [headline, setHeadline] = useState<string>('');
   const [users, setUsers] = useState<string[]>([]);
@@ -47,6 +49,10 @@ const GameRoom: React.FC<GameRoomProps> = () => {
     };
   }, []);
 
+  useEffect(() => {
+    console.log(gameState);
+  }, [gameState]);
+
   return (
     <ScrollView>
       <Text>{headline}</Text>
@@ -56,13 +62,18 @@ const GameRoom: React.FC<GameRoomProps> = () => {
         <Text key={index}>{user}</Text>
       ))}
       <Button title='Send Message' onPress={() => {}} />
-      {gameState.starterRaceCards && gameState.starterRaceCards.length > 0 ? (
-        <View>
-          {gameState.starterRaceCards.map((card, index) => (
-            <Card key={index} card={toCamelCase(card)} />
-          ))}
-        </View>
-      ) : null}
+
+      {gameState?.starterRaceCards?.length > 0 && (
+        <CardCarousel cards={gameState.starterRaceCards} />
+      )}
+
+      {gameState?.starterClassCards?.length > 0 && (
+        <CardCarousel cards={gameState.starterClassCards} />
+      )}
+
+      {gameState?.starterWeaponCards?.length > 0 && (
+        <CardCarousel cards={gameState.starterWeaponCards} />
+      )}
     </ScrollView>
   );
 };

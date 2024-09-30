@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
-import { SafeAreaView, TouchableOpacity } from 'react-native';
+import { TouchableOpacity, SafeAreaView } from 'react-native';
 
-export const HomeContainer = styled.View`
+export const HomeContainer = styled(SafeAreaView)`
   flex: 1;
   align-items: center;
 `;

@@ -39,3 +39,16 @@ export interface RaceCardType {
     agility: number | null;
   };
 }
+
+export interface ClassCardType {
+  id: string | null;
+  name: string | null;
+  frontImageUrl: string | null;
+  backImageUrl: string | null;
+  data: {
+    health: number | null;
+    intellect: number | null;
+    strength: number | null;
+    agility: number | null;
+  };
+}
